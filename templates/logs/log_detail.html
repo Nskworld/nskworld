@@ -1,0 +1,8 @@
+{% extends 'logs/base_generic.html' %}
+{% block content %}
+    <h2>{{ log.title }}</h2>
+    <p>{{ log.content }}</p>
+    <a href="{% url 'log_edit' pk=log.pk %}">Edit</a>
+    <a href="{% url 'log_delete' pk=log.pk %}">Delete</a>
+    <a href="{% url 'log_list' %}">Back to list</a>
+{% endblock %}

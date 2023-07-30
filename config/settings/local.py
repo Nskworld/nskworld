@@ -6,13 +6,12 @@ import environ
 import os
 
 # カスタムライブラリ
-from settings import base
+from .base import *
 
-# 変数
-BASE_DIR = base.BASE_DIR
-ENV = environ.Env()
-environ.Env.read_env(str(BASE_DIR / ".env"))
-# VARIABLE_NAME = env("VARIABLE_NAME")
+# 環境変数
+env = environ.Env()
+environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_local"))
+SECRET_KEY = env("SECRET_KEY")
 
 # 設定
 ALLOWED_HOSTS = ["*"]
@@ -21,10 +20,10 @@ ALLOWED_HOSTS = ["*"]
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.sqlite3",
-#         "NAME": BASE_DIR / "db.sqlite3",
+#         "NAME": BASE_DIR / "db.sqlite3"
 #     }
 # }
-DATABASES = base.DATABASES
+DATABASES = DEFAULT_DATABASES
 DEBUG = True
 LOGGING = {
     # 「1」で固定
@@ -35,13 +34,13 @@ LOGGING = {
     "formatters": {
         # ローカル用
         "local": {
-            "format": "[{name}] {asctime} [{levelname}] {pathname}:{lineo:d} "
+            "format": "[{name}] {asctime} [{levelname}] {pathname}:{lineno:d} "
                       "{message}",
             "style": "{"
         }
     },
     # ハンドラ
-    "handolers": {
+    "handlers": {
         # コンソール出力用ハンドラ
         "console": {
             "level": "DEBUG",
@@ -56,17 +55,23 @@ LOGGING = {
     },
     # その他のロガー
     "loggers": {
+        # logsアプリケーションのロガー
+        "logs": {
+            "handlers": ["console"],
+            "level": "DEBUG",
+            "propagate": False
+        },
         # Django本体が出力するロガー全般を扱うロガー
         "django": {
             "handlers": ["console"],
             "level": "INFO",
-            "propagate": False,
+            "propagate": False
         },
         # 発行されるSQL文を出力するためのロガー
         "django.db.backends": {
             "handlers": ["console"],
             "level": "DEBUG",
-            "propagate": False,
-        },
+            "propagate": False
+        }
     }
 }

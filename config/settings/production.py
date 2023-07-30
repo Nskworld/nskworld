@@ -6,20 +6,19 @@ import environ
 import os
 
 # カスタムライブラリ
-from settings import base
+from .base import *
 
-# 変数
-BASE_DIR = base.BASE_DIR
-ENV = environ.Env()
-environ.Env.read_env(str(BASE_DIR / ".env"))
-# VARIABLE_NAME = env("VARIABLE_NAME")
+# 環境変数
+env = environ.Env()
+environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_production"))
+SECRET_KEY = env("SECRET_KEY")
 
 # 設定
 ALLOWED_HOSTS = []
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        "NAME": os.path.join(BASE_DIR, "db.sqlite3")
     }
 }
 # TODO: envファイルに中身を移す
@@ -52,7 +51,7 @@ LOGGING = {
         }
     },
     # ハンドラ
-    "handolers": {
+    "handlers": {
         # ファイル出力用ハンドラ
         "file": {
             "level": "INFO",
@@ -64,7 +63,7 @@ LOGGING = {
     # ルートロガー
     "root": {
         "handlers": ["file"],
-        "level": "INFO",
+        "level": "INFO"
     },
     # その他のロガー
     "loggers": {
@@ -72,7 +71,7 @@ LOGGING = {
         "django": {
             "handlers": ["file"],
             "level": "WARNING",
-            "propagate": False,
+            "propagate": False
         },
     }
 }
