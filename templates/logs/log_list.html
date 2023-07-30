@@ -1,0 +1,13 @@
+{% extends 'logs/base_generic.html' %}
+{% block content %}
+    <table>
+    {% for log in logs %}
+        <tr>
+            <td><a href="{% url 'log_detail' pk=log.pk %}">{{ log.title }}</a></td>
+            <td><a href="{% url 'log_edit' pk=log.pk %}">Edit</a></td>
+            <td><a href="{% url 'log_delete' pk=log.pk %}">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'log_new' %}">New Log</a>
+{% endblock %}
