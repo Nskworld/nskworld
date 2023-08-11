@@ -37,9 +37,8 @@ LOGGING = {
     "formatters": {
         # 本番用
         "production": {
-            "format": "{asctime} <{process:d}, {thread:d}> [{lebelname}] "
-                      "{pathname}: {lineno:d} {message}",
-            "style": "{"
+            "format": "%(asctime)s [%(levelname)s] %(process)d %(thread)d  "
+                      "%(pathname)s: %(lineno)d %(message)s"
         }
     },
     # ハンドラ
@@ -48,12 +47,18 @@ LOGGING = {
         "file": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "filename": f"/var/log/{BASE_DIR.name}/app.log",
+            "filename": "/var/log/{}/app.log".format("Route404"),
             "formatter": "production"
         }
     },
-    # その他のロガー
+    # ロガー
     "loggers": {
+        # 自作アプリケーション全般のログを拾うロガー
+        "": {
+            "handlers": ["file"],
+            "level": "INFO",
+            "propagate": False
+        },
         # Django本体が出力するロガー全般を扱うロガー
         "django": {
             "handlers": ["file"],
