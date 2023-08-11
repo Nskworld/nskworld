@@ -16,8 +16,6 @@ SECRET_KEY = env("SECRET_KEY")
 # 設定
 ALLOWED_HOSTS = []
 
-# TODO: envファイルに中身を移す
-# 参考: あきよこ本 P.137
 DATABASES = {
     "production" : {
         "ENGINE": "django.db.backends.postgresql",
