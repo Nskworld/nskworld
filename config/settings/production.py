@@ -15,24 +15,18 @@ SECRET_KEY = env("SECRET_KEY")
 
 # 設定
 ALLOWED_HOSTS = []
-DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "db.sqlite3")
-    }
-}
+
 # TODO: envファイルに中身を移す
 # 参考: あきよこ本 P.137
 DATABASES = {
     "production" : {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "",
-        "USER": "",
-        "PASSWORD": "",
-        "HOST": "",
-        "PORT": "",
-        "ATOMIC_REQUESTS": "",
-        "TIME_ZONE": ""
+        "NAME": "route404",
+        "USER": "route404user",
+        "PASSWORD": env("DB_PASSWORD"),
+        "HOST":  env("DB_HOST"),
+        "PORT": "5432",
+        "ATOMIC_REQUESTS": True
     }
 }
 DEBUG = False
