@@ -52,18 +52,13 @@ LOGGING = {
             "formatter": "production"
         }
     },
-    # ルートロガー
-    "root": {
-        "handlers": ["file"],
-        "level": "INFO"
-    },
     # その他のロガー
     "loggers": {
         # Django本体が出力するロガー全般を扱うロガー
         "django": {
             "handlers": ["file"],
-            "level": "WARNING",
+            "level": "INFO",
             "propagate": False
-        },
+        }
     }
 }
