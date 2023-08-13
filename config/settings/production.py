@@ -37,7 +37,7 @@ environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_prod
 SECRET_KEY = env("SECRET_KEY")
 
 # 各種設定
-ALLOWED_HOSTS = env("ALLOWED_HOSTS")
+ALLOWED_HOSTS = [env("ALLOWED_HOST")]
 
 DATABASES = {
     "default" : {
