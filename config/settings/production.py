@@ -70,7 +70,7 @@ LOGGING = {
         "file": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "filename": "/var/log/route404/app.log",
+            "filename": "/var/log/nskworld/app.log",
             "formatter": "production"
         }
     },
