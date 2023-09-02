@@ -1,0 +1,12 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <table>
+    {% for emotion in emotions %}
+        <tr>
+            <td>{{ emotion.title }}</td>
+            <td><a href="{% url 'emotion_delete' pk=emotion.pk %}">削除する</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'emotion_new' %}">感情を登録する</a>
+{% endblock %}
