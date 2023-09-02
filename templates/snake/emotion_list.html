@@ -3,7 +3,8 @@
     <table>
     {% for emotion in emotions %}
         <tr>
-            <td>{{ emotion.title }}</td>
+            <td>{{ emotion.name }}</td>
+            <td>{{ emotion.level }}</td>
             <td><a href="{% url 'emotion_delete' pk=emotion.pk %}">削除する</a></td>
         </tr>
     {% endfor %}

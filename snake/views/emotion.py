@@ -19,7 +19,7 @@ def emotion_new(request):
             return redirect('emotion_list')
     else:
         form = EmotionForm()
-    return render(request, 'snake/emotion_edit.html', {'emotion': emotion})
+    return render(request, 'snake/emotion_create.html', {'form': form})
 
 
 def emotion_delete(request, pk):
