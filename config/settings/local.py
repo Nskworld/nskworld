@@ -36,7 +36,7 @@ environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_loca
 SECRET_KEY = env("SECRET_KEY")
 
 # 各種設定
-ALLOWED_HOSTS = ["localhost"]
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 DATABASES = DEFAULT_DATABASES
 DEBUG = True
