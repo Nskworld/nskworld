@@ -37,7 +37,7 @@ environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_prod
 SECRET_KEY = env("SECRET_KEY")
 
 # 各種設定
-ALLOWED_HOSTS = [env("ALLOWED_HOST")]
+ALLOWED_HOSTS = [env("ALLOWED_HOST"), "www.nskworld.com"]
 
 DATABASES = {
     "default" : {
@@ -70,7 +70,7 @@ LOGGING = {
         "file": {
             "level": "INFO",
             "class": "logging.FileHandler",
-            "filename": "/var/log/route404/app.log",
+            "filename": "/var/log/nskworld/app.log",
             "formatter": "production"
         }
     },
