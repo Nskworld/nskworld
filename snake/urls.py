@@ -1,10 +1,8 @@
 from django.urls import path
-from .views import *
+from .views import emotion
 
 urlpatterns = [
-    # path('', views.log_list, name='log_list'),
-    # path('<int:pk>/', views.log_detail, name='log_detail'),
-    # path('new', views.log_new, name='log_new'),
-    # path('<int:pk>/edit/', views.log_edit, name='log_edit'),
-    # path('<int:pk>/delete/', views.log_delete, name='log_delete'),
+    path('', emotion.emotion_list, name='emotion_list'),
+    path('new', emotion.log_new, name='emotion_new'),
+    path('<int:pk>/delete/', emotion.log_delete, name='emotion_delete'),
 ]
