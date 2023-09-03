@@ -51,10 +51,8 @@ class Record(models.Model):
 
 class Performance(models.Model):
     """ パフォーマンスモデル """
-    created_at = models.DateTimeField(auto_now_add=True)
     performance = models.CharField(max_length=20)
     registered_datetime = models.DateTimeField(default=timezone.now)
-    updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.performance
@@ -64,4 +62,4 @@ class Performance(models.Model):
         Returns:
             str: 登録日
         """
-        return custom_strptime(self.registered_datetime)
+        return self.registered_datetime.strftime("%Y年%m月%d日")
