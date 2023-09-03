@@ -1,14 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from ..models import Record
-from ..forms import RecordForm
+from ..forms.record import RecordForm
 
 def record_list(request):
     records = Record.objects.all()
-    return render(request, 'records/record_list.html', {'records': records})
+    return render(request, 'coala/records/record_list.html', {'records': records})
 
 def record_detail(request, pk):
     record = get_object_or_404(Record, pk=pk)
-    return render(request, 'records/record_detail.html', {'record': record})
+    return render(request, 'coala/records/record_detail.html', {'record': record})
 
 def record_new(request):
     if request.method == "POST":
@@ -19,7 +19,7 @@ def record_new(request):
             return redirect('record_list')
     else:
         form = RecordForm()
-    return render(request, 'records/record_edit.html', {'form': form})
+    return render(request, 'coala/records/record_edit.html', {'form': form})
 
 def record_edit(request, pk):
     record = get_object_or_404(Record, pk=pk)
@@ -31,7 +31,7 @@ def record_edit(request, pk):
             return redirect('record_list')
     else:
         form = RecordForm(instance=record)
-    return render(request, 'records/record_edit.html', {'form': form})
+    return render(request, 'coala/records/record_edit.html', {'form': form})
 
 def record_delete(request, pk):
     record = get_object_or_404(Record, pk=pk)
