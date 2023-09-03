@@ -45,3 +45,10 @@ class Record(models.Model):
         minutes = remainder // 60
         
         return f"{hours}時間{minutes}分"
+    
+
+class Performance(models.Model):
+    performance = models.CharField()
+    
+    def __str__(self):
+        return self.performance
