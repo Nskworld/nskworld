@@ -16,10 +16,11 @@ def custom_strptime(time_str):
     return timedelta(hours=hour, minutes=minute)
 
 class Record(models.Model):
-    time_going_bed = models.CharField(max_length=5)
-    time_falling_asleep = models.CharField(max_length=5)
-    time_getting_up = models.CharField(max_length=5)
+    """ 睡眠記録モデル """
     created_at = models.DateTimeField(auto_now_add=True)
+    time_falling_asleep = models.CharField(max_length=5)
+    time_getting_up = models.CharField(max_length=5)  
+    time_going_bed = models.CharField(max_length=5)
     updated_at = models.DateTimeField(auto_now=True)
 
     def format_created_at(self):
@@ -49,9 +50,10 @@ class Record(models.Model):
     
 
 class Performance(models.Model):
+    """ パフォーマンスモデル """
+    created_at = models.DateTimeField(auto_now_add=True)
     performance = models.CharField()
     registered_datetime = models.DateTimeField(default=timezone.now)
-    created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
