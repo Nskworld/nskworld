@@ -48,7 +48,7 @@ class Record(models.Model):
     
 
 class Performance(models.Model):
-    performance = models.CharField()
+    performance = models.CharField(max_length=50)
     
     def __str__(self):
         return self.performance
