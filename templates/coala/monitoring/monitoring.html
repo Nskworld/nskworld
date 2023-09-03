@@ -27,15 +27,26 @@
                 fill: false
             }]
         };
-
+    
         const config = {
             type: 'line',
             data: data,
-            options: {}
+            options: {
+                scales: {
+                    y: {
+                        min: 0,  // 最小値を0に設定
+                        max: 5,  // 最大値を4に設定
+                        ticks: {
+                            stepSize: 1  // 刻みを1に設定
+                        }
+                    }
+                }
+            }
         };
-
+    
         const performanceChart = new Chart(ctx, config);
     </script>
+    
 
 </body>
 </html>
