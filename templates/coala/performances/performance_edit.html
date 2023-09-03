@@ -5,6 +5,5 @@
         {{ form.as_p }}
         <button type="submit" class="save btn btn-default">保存する</button>
     </form>
-    {% comment %} performanceにリストビューが存在しないのでログの一覧へ遷移させる {% endcomment %}
-    <a href="{% url 'logs_list' %}">キャンセル</a>
+    <a href="{% url 'performance_list' %}">キャンセル</a>
 {% endblock %}
