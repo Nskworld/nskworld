@@ -1,0 +1,14 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <table>
+    {% for performance in performances %}
+        <tr>
+            <td>{{ performance.registered_date }}</td>
+            <td>{{ performance.performance }}</td>
+            <td><a href="{% url 'performance_edit' pk=performance.pk %}">編集する</a></td>
+            <td><a href="{% url 'performance_delete' pk=performance.pk %}">削除する</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'performance_new' %}">新しく記録する</a>
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <h2>{{ record.format_created_at }}の睡眠記録</h2>
+    <table>
+        <tr>
+            <td>就寝時刻</td>
+            <td>{{ record.time_going_bed }}</td>
+        </tr>
+        <tr>
+            <td>入眠時刻</td>
+            <td>{{ record.time_falling_asleep }}</td>
+        </tr>
+        <tr>
+            <td>起床時刻</td>
+            <td>{{ record.time_getting_up }}</td>
+        </tr>
+        <tr>
+            <td>睡眠時間</td>
+            <td>{{ record.time_of_sleeping }}</td>
+        </tr>
+    </table>
+    <a href="{% url 'record_edit' pk=record.pk %}">編集する</a>
+    <a href="{% url 'record_delete' pk=record.pk %}">削除する</a>
+    <a href="{% url 'record_list' %}">睡眠記録一覧へ戻る</a>
+{% endblock %}

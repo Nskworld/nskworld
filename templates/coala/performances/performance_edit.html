@@ -3,7 +3,7 @@
     <form method="POST" class="post-form">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="save btn btn-default">保存する</button>
     </form>
-    <a href="{% url 'log_list' %}">キャンセル</a>
+    <a href="{% url 'performance_list' %}">キャンセル</a>
 {% endblock %}
