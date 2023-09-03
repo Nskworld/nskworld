@@ -1,5 +1,6 @@
-from datetime import datetime, timedelta
+from datetime import timedelta
 from django.db import models
+from django.utils import timezone
 
 
 def custom_strptime(time_str):
@@ -48,7 +49,10 @@ class Record(models.Model):
     
 
 class Performance(models.Model):
-    performance = models.CharField(max_length=50)
+    performance = models.CharField()
+    registered_datetime = models.DateTimeField(default=timezone.now)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     
     def __str__(self):
         return self.performance
