@@ -52,7 +52,7 @@ class Record(models.Model):
 class Performance(models.Model):
     """ パフォーマンスモデル """
     created_at = models.DateTimeField(auto_now_add=True)
-    performance = models.CharField()
+    performance = models.CharField(max_length=20)
     registered_datetime = models.DateTimeField(default=timezone.now)
     updated_at = models.DateTimeField(auto_now=True)
     
