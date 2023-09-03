@@ -8,7 +8,7 @@ class Record(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
 
     def convert_time(self, time_value):
-        """ 選択された数値を30分刻みの時間表記に変換します
+        """ 選択された数値を30分刻みの時間表記に変換する
 
         Args:
             time_value (int): 0から47までの整数
@@ -22,6 +22,14 @@ class Record(models.Model):
         hours = time_value // 2
         minutes = (time_value % 2) * 30
         return f"{hours}:{minutes:02d}"
+    
+    def format_created_at(self):
+        """ 作成日時を文字列に変換する
+
+        Returns:
+            str: 「yyyy年mm月dd日」のフォーマット文字列
+        """
+        return self.created_at.strftime("%Y年%m月%d日")
 
     def convert_time_going_bed(self):
         return self.convert_time(self.time_going_bed)

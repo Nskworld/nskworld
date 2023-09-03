@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <h2>{{ record.format_created_at }}の睡眠記録</h2>
+    <p>{{ record.convert_time_going_bed }}</p>
+    <p>{{ record.convert_time_falling_asleep }}</p>
+    <p>{{ record.convert_time_getting_up }}</p>
+    <a href="{% url 'record_edit' pk=log.pk %}">Edit</a>
+    <a href="{% url 'record_delete' pk=log.pk %}">Delete</a>
+    <a href="{% url 'record_list' %}">Back to list</a>
+{% endblock %}

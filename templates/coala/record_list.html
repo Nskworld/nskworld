@@ -1,0 +1,13 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+    <table>
+    {% for record in records %}
+        <tr>
+            <td><a href="{% url 'record_detail' pk=record.pk %}">{{ record.title }}</a></td>
+            <td><a href="{% url 'record_edit' pk=record.pk %}">Edit</a></td>
+            <td><a href="{% url 'record_delete' pk=record.pk %}">Delete</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+    <a href="{% url 'record_new' %}">New record</a>
+{% endblock %}
