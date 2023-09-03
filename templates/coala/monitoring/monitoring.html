@@ -1,0 +1,42 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{% extends 'base_generic.html' %}
+{% block content %}
+<!-- performance_chart.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>Performance Chart</title>
+</head>
+<body>
+
+    <canvas id="performanceChart" width="400" height="200"></canvas>
+
+    <script>
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+        
+        const data = {
+            labels: {{ labels|safe }},
+            datasets: [{
+                label: 'Performance',
+                data: {{ data|safe }},
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 1,
+                fill: false
+            }]
+        };
+
+        const config = {
+            type: 'line',
+            data: data,
+            options: {}
+        };
+
+        const performanceChart = new Chart(ctx, config);
+    </script>
+
+</body>
+</html>
+{% endblock %}
