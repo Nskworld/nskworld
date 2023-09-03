@@ -63,3 +63,21 @@ class Performance(models.Model):
             str: 登録日
         """
         return self.registered_datetime.strftime("%Y年%m月%d日")
+
+
+class Challenge(models.Model):
+    """ チャレンジモデル """
+    challenge = models.CharField(max_length=250)
+    evaluation = models.IntegerField(default=0)
+    registered_datetime = models.DateTimeField(default=timezone.now)
+    
+    def __str__(self):
+        return self.challenge
+     
+    # TODO: Performanceのと全く同じなのでまとめる
+    def registered_date(self):
+        """ 登録日のフォーマットを整形する
+        Returns:
+            str: 登録日
+        """
+        return self.registered_datetime.strftime("%Y年%m月%d日")
