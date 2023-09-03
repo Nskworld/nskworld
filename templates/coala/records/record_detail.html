@@ -19,7 +19,7 @@
             <td>{{ record.time_of_sleeping }}</td>
         </tr>
     </table>
-    <a href="{% url 'record_edit' pk=record.pk %}">Edit</a>
-    <a href="{% url 'record_delete' pk=record.pk %}">Delete</a>
-    <a href="{% url 'record_list' %}">Back to list</a>
+    <a href="{% url 'record_edit' pk=record.pk %}">編集する</a>
+    <a href="{% url 'record_delete' pk=record.pk %}">削除する</a>
+    <a href="{% url 'record_list' %}">睡眠記録一覧へ戻る</a>
 {% endblock %}

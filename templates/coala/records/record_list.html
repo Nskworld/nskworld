@@ -5,10 +5,10 @@
         <tr>
             <td><a href="{% url 'record_detail' pk=record.pk %}">{{ record.format_created_at }}</a></td>
             <td>{{ record.time_of_sleeping }}</td>
-            <td><a href="{% url 'record_edit' pk=record.pk %}">Edit</a></td>
-            <td><a href="{% url 'record_delete' pk=record.pk %}">Delete</a></td>
+            <td><a href="{% url 'record_edit' pk=record.pk %}">編集する</a></td>
+            <td><a href="{% url 'record_delete' pk=record.pk %}">削除する</a></td>
         </tr>
     {% endfor %}
     </table>
-    <a href="{% url 'record_new' %}">New record</a>
+    <a href="{% url 'record_new' %}">睡眠記録を作成する</a>
 {% endblock %}
