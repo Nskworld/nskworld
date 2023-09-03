@@ -62,11 +62,17 @@ class Performance(models.Model):
         Returns:
             str: 登録日
         """
-        return self.registered_datetime.strftime("%Y年%m月%d日")
+        return self.registered_datetime.strftime("%Y年%m月%d日%H時%M分")
 
 
 class Challenge(models.Model):
-    """ チャレンジモデル """
+    """ チャレンジモデル
+
+    evaluation:
+        0: 未評価
+        1: 継続する
+        2: 止める
+    """
     challenge = models.CharField(max_length=250)
     evaluation = models.IntegerField(default=0)
     registered_datetime = models.DateTimeField(default=timezone.now)

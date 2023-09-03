@@ -1,5 +1,5 @@
 from django.urls import path
-from .challenge import record, performance, challenge
+from .views import record, performance, challenge
 
 urlpatterns = [
     # Recordを管理するAPI

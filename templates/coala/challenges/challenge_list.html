@@ -11,6 +11,7 @@
             <td><a href="{% url 'challenge_detail' pk=challenge.pk %}">{{ challenge.challenge }}</a></td>
             <td>{{challenge.registered_date}}</td>
             <td>{{challenge.evaluation}}</td>
+            <td><a href="{% url 'evaluation_edit' pk=challenge.pk %}">評価する</a></td>
             <td><a href="{% url 'challenge_edit' pk=challenge.pk %}">編集する</a></td>
             <td><a href="{% url 'challenge_delete' pk=challenge.pk %}">削除する</a></td>
         </tr>
