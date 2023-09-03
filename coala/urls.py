@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import record, performance, challenge
+from .views import record, performance, challenge, monitoring
 
 urlpatterns = [
     # Recordを管理するAPI
@@ -19,5 +19,7 @@ urlpatterns = [
     path('challenge/new', challenge.challenge_new, name='challenge_new'),
     path('challenge/<int:pk>/edit/', challenge.challenge_edit, name='challenge_edit'),
     path('challenge/evaluation/<int:pk>/edit/', challenge.evaluation_edit, name='evaluation_edit'),
-    path('challenge/<int:pk>/delete/', challenge.challenge_delete, name='challenge_delete')
+    path('challenge/<int:pk>/delete/', challenge.challenge_delete, name='challenge_delete'),
+    # モニタリングを管理するAPI
+    path('monitoring/', monitoring.monitoring, name='monitoring'),
 ]
