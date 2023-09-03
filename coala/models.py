@@ -58,3 +58,10 @@ class Performance(models.Model):
     
     def __str__(self):
         return self.performance
+    
+    def registered_date(self):
+        """ 登録日のフォーマットを整形する
+        Returns:
+            str: 登録日
+        """
+        return custom_strptime(self.registered_datetime)
