@@ -7,7 +7,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.0.0/dist/chart.min.js"></script>
     <title>Performance Chart</title>
 </head>
 <body>
@@ -16,16 +16,32 @@
 
     <script>
         const ctx = document.getElementById('performanceChart').getContext('2d');
-        
+        const labels = {{ labels|safe }};
+        const performanceData = {{ performance_data|safe }}
+        const sleepData = {{ sleep_data|safe }};
+        const sanitizedSleepData = sleepData.map(x => x === 0 ? null : x);  // データが存在しないと0になるのでnullへ置き換える
+
         const data = {
-            labels: {{ labels|safe }},
-            datasets: [{
-                label: 'Performance',
-                data: {{ data|safe }},
-                borderColor: 'rgba(75, 192, 192, 1)',
-                borderWidth: 1,
-                fill: false
-            }]
+            labels: labels,
+            datasets: [
+                {
+                    label: 'Performance',
+                    data: performanceData,
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    fill: false,
+                    yAxisID: 'y-axis-1'
+                },
+                {
+                    label: 'Sleep Duration',
+                    data: sanitizedSleepData,
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    fill: false,
+                    spanGaps: true,
+                    yAxisID: 'y-axis-2'
+                }
+            ]
         };
     
         const config = {
@@ -33,11 +49,23 @@
             data: data,
             options: {
                 scales: {
-                    y: {
-                        min: 0,  // 最小値を0に設定
-                        max: 5,  // 最大値を4に設定
+                    'y-axis-1': {
+                        position: 'left',
+                        min: 0,
+                        max: 5,
                         ticks: {
-                            stepSize: 1  // 刻みを1に設定
+                            stepSize: 1
+                        }
+                    },
+                    'y-axis-2': {
+                        position: 'right',
+                        min: 5,
+                        max: 10,
+                        ticks: {
+                            stepSize: 1
+                        },
+                        grid: {
+                            drawOnChartArea: false // 右側のグリッドラインを消去
                         }
                     }
                 }
