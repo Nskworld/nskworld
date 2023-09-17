@@ -1,6 +1,6 @@
 import pytz
 from django.shortcuts import render
-from ..models import Performance
+from ..models import Performance, Record
 from collections import defaultdict
 
 
@@ -12,13 +12,13 @@ def monitoring(request):
 
     Returns:
         各種モニタリング情報
-        ※ 現状は時間ごとのパフォーマンスのグラフのみ表示している
     """
-    # UTC -> JST に変換するための設定
-    jst = pytz.timezone('Asia/Tokyo')
+    
+    jst = pytz.timezone('Asia/Tokyo')   # UTC -> JST に変換するための設定
     performances = Performance.objects.all().order_by('registered_datetime')
+    records = Record.objects.all().order_by('created_at')
     
-    
+    # パフォーマンスグラフを表示するための処理
     data_dict = defaultdict(list)
     labels = []
     # 文字列を整数にマッピング
@@ -51,6 +51,26 @@ def monitoring(request):
         data_dict[hour_str].append(performance_value)
     
     labels = list(data_dict.keys())
-    data = [sum(v)/len(v) for v in data_dict.values()]  # 平均値
+    performance_data = [sum(v)/len(v) for v in data_dict.values()]  # 平均値
     
-    return render(request, 'coala/monitoring/monitoring.html', {'labels': labels, 'data': data})
+    
+    # 睡眠時間グラフを表示するための処理
+    sleep_data_dict = defaultdict(list)
+    
+    for r in records:
+        date_str = r.format_created_at().replace("年", "-").replace("月", "-").replace("日", "")
+        time_of_sleeping = r.time_of_sleeping()
+        hours, minutes = map(int, time_of_sleeping.replace("時間", " ").replace("分", "").split())
+        sleep_duration = hours + minutes / 60.0  # 睡眠時間を小数点の時間に変換
+        sleep_data_dict[date_str].append(sleep_duration)
+    
+    sleep_data_dict_with_time = {}
+    for label in labels:
+        date_str = label.split('\n')[-1]
+        sleep_duration_avg = sum(sleep_data_dict.get(date_str, [0])) / len(sleep_data_dict.get(date_str, [1]))
+        sleep_data_dict_with_time[label] = sleep_duration_avg
+        
+    sleep_data = [sleep_data_dict_with_time.get(label, None) for label in labels]
+    
+    return render(request, 'coala/monitoring/monitoring.html', {'labels': labels, 'performance_data': performance_data, 'sleep_data': sleep_data})
+
