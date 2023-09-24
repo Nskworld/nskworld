@@ -25,9 +25,10 @@ DEFAULT_INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "bunny",
+    "coala",
     "logs",
-    "snake",
-    "coala"
+    "snake"  
 ]
 
 DEFAULT_MIDDLEWARE = [
