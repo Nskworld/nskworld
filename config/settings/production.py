@@ -34,6 +34,7 @@ DEFAULT_AUTO_FIELD = DEFAULT_DEFAULT_AUTO_FIELD
 env = environ.Env()
 environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_production"))
 SECRET_KEY = env("SECRET_KEY")
+WEBHOOK_URL = env("WEBHOOK_URL")
 
 # 各種設定
 ALLOWED_HOSTS = [env("ALLOWED_HOST"), "www.nskworld.com"]

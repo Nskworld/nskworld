@@ -32,6 +32,7 @@ DEFAULT_AUTO_FIELD = DEFAULT_DEFAULT_AUTO_FIELD
 env = environ.Env()
 environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_local"))
 SECRET_KEY = env("SECRET_KEY")
+WEBHOOK_URL = env("WEBHOOK_URL")
 
 # 各種設定
 ALLOWED_HOSTS = ["127.0.0.1"]
