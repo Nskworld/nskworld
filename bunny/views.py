@@ -2,7 +2,7 @@
 import os
 from django.conf import settings
 from django.shortcuts import render 
-from .alert import SendMessageToSlack
+from .alerts import SendMessageToSlack
 from .forms import UploadCSVForm
 from .worker import BulkRegistrationPerformance
 
