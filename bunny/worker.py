@@ -3,7 +3,7 @@ import threading
 from datetime import datetime
 from django.utils import timezone
 
-from ..coala.models import Performance
+from coala.models import Performance
 
 class MultiThreadWorker:
     def __init__(self, num_threads=3):
