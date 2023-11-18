@@ -2,7 +2,7 @@
 import os
 from django.conf import settings
 from django.shortcuts import render 
-from .alerts import SendMessageToSlack
+from .alerts import send_message_to_slack
 from .forms import UploadCSVForm
 from .worker import BulkRegistrationPerformance
 
@@ -30,5 +30,5 @@ def upload_csv(request):
     else:
         form = UploadCSVForm()
 
-    SendMessageToSlack(webhook_url, message)
+    send_message_to_slack(webhook_url, message)
     return render(request, 'bunny/upload.html', {'form': form, 'message': message})
