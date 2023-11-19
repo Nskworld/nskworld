@@ -28,7 +28,6 @@ DEFAULT_INSTALLED_APPS = [
     "bear",
     "bunny",
     "coala",
-    "logs",
     "snake"
 ]
 
