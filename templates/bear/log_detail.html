@@ -2,8 +2,8 @@
 {% block content %}
     <h2>{{ log.title }}</h2>
     <p>{{ log.content }}</p>
-    {% if log.image %}
-        <img src="{{ log.image.url }}" alt="{{ log.title }}" />
+    {% if encoded_image %}
+        <img src="data:image/jpeg;base64,{{ encoded_image }}" alt="{{ log.title }}" />
     {% endif %}
     
     <a href="{% url 'log_edit' pk=log.pk %}">編集する</a>

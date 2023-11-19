@@ -1,8 +1,10 @@
 {% extends 'base_generic.html' %}
 {% block content %}
-    <form method="POST" class="post-form">
+    <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
-        {{ form.as_p }}
+        <p>{{ form.title.label_tag }} {{ form.title }}</p>
+        <p>{{ form.content.label_tag }} {{ form.content }}</p>
+        <p>{{ form.image.label_tag }} {{ form.image }}</p> 
         <button type="submit" class="save btn btn-default">Save</button>
     </form>
     <a href="{% url 'log_list' %}">キャンセル</a>

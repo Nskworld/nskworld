@@ -9,13 +9,11 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
 import os
 from pathlib import Path
 
 # Build paths inside the project like this: DEFAULT_BASE_DIR / 'subdir'.
 DEFAULT_BASE_DIR = Path(__file__).resolve().parent.parent.parent
-
 
 # Application definition
 DEFAULT_INSTALLED_APPS = [
@@ -121,13 +119,6 @@ DEFAULT_MEDIA_ROOT =  DEFAULT_BASE_DIR / "media_root"
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
-
-# Amazon S3 設定
-AWS_ACCESS_KEY_ID = 'your-access-key-id'
-AWS_SECRET_ACCESS_KEY = 'your-secret-access-key'
-AWS_STORAGE_BUCKET_NAME = 'your-bucket-name'
-AWS_S3_REGION_NAME = 'your-region'  # 例: 'us-east-1'
-AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com'
 
 # デフォルトファイルストレージを S3 に設定
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
