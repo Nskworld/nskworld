@@ -121,4 +121,4 @@ DEFAULT_MEDIA_ROOT =  DEFAULT_BASE_DIR / "media_root"
 DEFAULT_DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # デフォルトファイルストレージを S3 に設定
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
