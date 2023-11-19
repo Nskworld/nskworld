@@ -26,13 +26,14 @@ STATIC_ROOT = DEFAULT_STATIC_ROOT
 MEDIA_URL = DEFAULT_MEDIA_URL
 MEDIA_ROOT = DEFAULT_MEDIA_ROOT
 DEFAULT_AUTO_FIELD = DEFAULT_DEFAULT_AUTO_FIELD
-
+DEFAULT_FILE_STORAGE = FILE_STORAGE 
 
 ## カスタム設定
 
 # 環境変数の設定
 env = environ.Env()
 environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_production"))
+SECRET_KEY = env("SECRET_KEY")
 
 # Amazon S3 設定
 AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
@@ -95,5 +96,4 @@ LOGGING = {
         }
     }
 }
-SECRET_KEY = env("SECRET_KEY")
 WEBHOOK_URL = env("WEBHOOK_URL")
