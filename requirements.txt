@@ -1,5 +1,8 @@
--r base.txt
+boto3==1.29.3
+Django==4.2.1
+django-cleanup==7.0.0
 django-environ==0.4.5
+django-storages==1.14.2
 gunicorn==20.1.0
 psycopg2-binary
 pytz==2023.3
