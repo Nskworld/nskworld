@@ -9,7 +9,7 @@ logger.setLevel(20)
 sh = logging.StreamHandler()
 logger.addHandler(sh)
 
-def SendMessageToSlack(webhook_url, message):
+def send_message_to_slack(webhook_url, message):
     """ Slackへ通知を発行する関数
 
     Args:
