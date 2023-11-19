@@ -12,7 +12,7 @@ def log_detail(request, pk):
 
 def log_new(request):
     if request.method == "POST":
-        form = LogForm(request.POST)
+        form = LogForm(request.POST, request.FILES)
         if form.is_valid():
             log = form.save(commit=False)
             log.save()
@@ -24,7 +24,7 @@ def log_new(request):
 def log_edit(request, pk):
     log = get_object_or_404(Log, pk=pk)
     if request.method == "POST":
-        form = LogForm(request.POST, instance=log)
+        form = LogForm(request.POST, request.FILES, instance=log)
         if form.is_valid():
             log = form.save(commit=False)
             log.save()
