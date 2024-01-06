@@ -27,7 +27,6 @@ DEFAULT_INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "bunny",
     "coala",
-    "logs",
     "snake"
 ]
 
