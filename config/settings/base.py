@@ -28,7 +28,8 @@ DEFAULT_INSTALLED_APPS = [
     "bunny",
     "coala",
     "logs",
-    "snake"  
+    "snake",
+    "squirrel"
 ]
 
 DEFAULT_MIDDLEWARE = [
