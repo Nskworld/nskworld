@@ -26,15 +26,21 @@ STATIC_ROOT = DEFAULT_STATIC_ROOT
 MEDIA_URL = DEFAULT_MEDIA_URL
 MEDIA_ROOT = DEFAULT_MEDIA_ROOT
 DEFAULT_AUTO_FIELD = DEFAULT_DEFAULT_AUTO_FIELD
-
+DEFAULT_FILE_STORAGE = FILE_STORAGE 
 
 ## カスタム設定
 
-# 環境変数
+# 環境変数の設定
 env = environ.Env()
 environ.Env.read_env(os.path.join(f"{BASE_DIR}/config/settings/env/", ".env_production"))
 SECRET_KEY = env("SECRET_KEY")
-WEBHOOK_URL = env("WEBHOOK_URL")
+
+# Amazon S3 設定
+AWS_ACCESS_KEY_ID = env("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = env("AWS_SECRET_ACCESS_KEY")
+AWS_STORAGE_BUCKET_NAME = env("AWS_STORAGE_BUCKET_NAME")
+AWS_S3_REGION_NAME = env("AWS_S3_REGION_NAME") 
+AWS_S3_CUSTOM_DOMAIN = env("AWS_S3_CUSTOM_DOMAIN")
 
 # 各種設定
 ALLOWED_HOSTS = [env("ALLOWED_HOST"), "www.nskworld.com"]
@@ -90,3 +96,4 @@ LOGGING = {
         }
     }
 }
+WEBHOOK_URL = env("WEBHOOK_URL")
